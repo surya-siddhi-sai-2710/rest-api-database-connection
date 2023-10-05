@@ -1,0 +1,57 @@
+spring:
+
+   application:
+
+     name: ${OPENSHIFT_APP_NAME:database-connector-app}
+
+   datasource:  
+
+    #initialize: false
+
+#   driverClassName: com.mysql.cj.jdbc.Driver
+
+    driverClassName: oracle.jdbc.OracleDriver
+
+#   url: "jdbc:mysql://localhost:3306/bancs"
+
+    url: ${APPDB_URL}
+
+    username: ${APPDB_URL_USERNAME}
+
+    password: ${APPDB_URL_PASSWORD}
+
+    type: ${APPDB_CONN_POOL_TYPE}
+
+    oracleucp:
+
+            connection-factory-class-name: ${UCP_POOL_CONN_FACTORY_CLASS_NAME}
+
+            connection-pool-name: ${UCP_POOL_CONN_NAME}
+
+            connection-wait-timeout: ${UCP_POOL_CONN_WAIT_TIMEOUT:0}
+
+            max-idle-time: ${UCP_POOL_CONN_MAX_IDLE_TIME:60}
+
+            abandoned-connection-timeout: ${UCP_POOL_CONN_ABANDONED_CONNECTION_TIMEOUT:60}
+
+            inactive-connection-timeout: ${UCP_POOL_CONN_INACTIVE_CONNECTION_TIMEOUT:60}
+
+            connection-harvest-trigger-count: ${UCP_POOL_CONN_CONNECTION_HARVEST_TRIGGER_COUNT:5}
+
+            connection-harvest-max-count: ${UCP_POOL_CONN_CONNECTION_HARVEST_MAX_COUNT:2}
+
+            login-timeout: ${UCP_POOL_CONN_LOGIN_TIMEOUT:60}
+
+            initial-pool-size: ${UCP_POOL_CONN_INITIAL_POOL_SIZE:5}
+
+            max-pool-size: ${UCP_POOL_CONN_MAX_POOL_SIZE:10}
+
+            min-pool-size: ${UCP_POOL_CONN_MIN_POOL_SIZE:5}
+
+            sql-for-validate-connection: 'select * from dual'
+camel:
+  component:
+       servlet:
+          mapping:
+            context-path: /* 
+         
